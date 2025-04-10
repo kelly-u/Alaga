@@ -27,6 +27,12 @@ import androidx.navigation.compose.rememberNavController
 import br.com.ifpe.gleicekelly.alaga.ui.view.MainViewModel
 import androidx.compose.runtime.* //remember
 import br.com.ifpe.gleicekelly.alaga.ui.CityDialog
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.NavDestination.Companion.hasRoute
+import br.com.ifpe.gleicekelly.alaga.ui.nav.Route
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import android.Manifest
 
 @OptIn(ExperimentalMaterial3Api::class)
 class MainActivity : ComponentActivity() {
@@ -38,6 +44,10 @@ class MainActivity : ComponentActivity() {
             val viewModel : MainViewModel by viewModels()
             val navController = rememberNavController()
             var showDialog by remember { mutableStateOf(false) }
+            val currentRoute = navController.currentBackStackEntryAsState()
+            val showButton = currentRoute.value?.destination?.hasRoute(Route.EnderecosFavoritos::class)?:false
+            val launcher = rememberLauncherForActivityResult(contract =
+            ActivityResultContracts.RequestPermission(), onResult = {} )
             AlagaTheme {
                 if (showDialog) {
                     CityDialog(
@@ -75,14 +85,15 @@ class MainActivity : ComponentActivity() {
                         BottomNavBar(navController = navController, items)
                     },
                     floatingActionButton = {
-                        FloatingActionButton(onClick = {
-                            showDialog = true
-                        }) {
-                            Icon(Icons.Default.Add, contentDescription = "Adicionar")
+                        if (showButton) {
+                            FloatingActionButton(onClick = { showDialog = true }) {
+                                Icon(Icons.Default.Add, contentDescription = "Adicionar")
+                            }
                         }
                     }
                 ) { innerPadding ->
                     Box(modifier = Modifier.padding(innerPadding)) {
+                        launcher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
                         MainNavHost(navController = navController)
                     }
                 }
