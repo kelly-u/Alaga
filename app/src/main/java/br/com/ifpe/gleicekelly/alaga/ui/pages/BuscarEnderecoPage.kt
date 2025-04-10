@@ -12,13 +12,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import br.com.ifpe.gleicekelly.alaga.R
+import br.com.ifpe.gleicekelly.alaga.ui.view.MainViewModel
 
-@Preview(showBackground = true)
 @Composable
-fun BuscarEnderecoPage(modifier: Modifier = Modifier) {
+fun BuscarEnderecoPage(modifier: Modifier = Modifier, viewModel: MainViewModel) {
     Column(
         modifier = modifier.fillMaxSize()
             .background(colorResource(id = R.color.blue_alaga))
