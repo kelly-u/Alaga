@@ -2,6 +2,7 @@ package br.com.ifpe.gleicekelly.alaga
 
 import android.app.Activity
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_NO_HISTORY
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -98,7 +99,7 @@ fun LoginPage(modifier: Modifier = Modifier) {
                 onClick = {
                     activity?.startActivity(
                         Intent(activity, RegisterActivity::class.java).setFlags(
-                            Intent.FLAG_ACTIVITY_SINGLE_TOP
+                            Intent.FLAG_ACTIVITY_SINGLE_TOP or FLAG_ACTIVITY_NO_HISTORY
                         )
                     )
                 }
