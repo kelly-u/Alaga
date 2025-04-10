@@ -21,19 +21,35 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import br.com.ifpe.gleicekelly.alaga.ui.view.MainViewModel
+import androidx.compose.runtime.* //remember
+import br.com.ifpe.gleicekelly.alaga.ui.CityDialog
 
+@OptIn(ExperimentalMaterial3Api::class)
 class MainActivity : ComponentActivity() {
-    @OptIn(ExperimentalMaterial3Api::class)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            val navController = rememberNavController()
             val viewModel : MainViewModel by viewModels()
+            val navController = rememberNavController()
+            var showDialog by remember { mutableStateOf(false) }
             AlagaTheme {
+                if (showDialog) {
+                    CityDialog(
+                        onDismiss = { showDialog = false }, // Fecha o diálogo
+                        onConfirm = { city ->
+                            if (city.isNotBlank()) {
+                                viewModel.add(city)
+                                showDialog = false
+                            }
+                        }
+                    )
+                }
                 Scaffold(
                     topBar = {
                         TopAppBar(
@@ -59,7 +75,9 @@ class MainActivity : ComponentActivity() {
                         BottomNavBar(navController = navController, items)
                     },
                     floatingActionButton = {
-                        FloatingActionButton(onClick = { }) {
+                        FloatingActionButton(onClick = {
+                            showDialog = true
+                        }) {
                             Icon(Icons.Default.Add, contentDescription = "Adicionar")
                         }
                     }

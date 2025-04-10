@@ -23,13 +23,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import br.com.ifpe.gleicekelly.alaga.ui.view.MainViewModel
 import br.com.ifpe.gleicekelly.alaga.ui.model.City
 
 @Composable
-fun EnderecosFavoritosPage(
-    modifier: Modifier = Modifier, viewModel: MainViewModel
-) {
+fun EnderecosFavoritosPage(modifier: Modifier = Modifier,
+                           viewModel: MainViewModel) {
     val cityList = viewModel.cities
     val context = LocalContext.current
 
@@ -48,6 +48,13 @@ fun EnderecosFavoritosPage(
                 })
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun EnderecosFavoritosPreview() {
+    // Exemplo de como passar o ViewModel no preview
+    EnderecosFavoritosPage(viewModel = MainViewModel())
 }
 
 //Mudar para rua
@@ -86,4 +93,13 @@ fun CityItem(
             Icon(Icons.Filled.Close, contentDescription = "Close")
         }
     }
+}
+@Preview(showBackground = true)
+@Composable
+fun CityItemPreview() {
+    CityItem(
+        city = City(name = "Recife", weather = "Ensolarado"),
+        onClick = {},
+        onClose = {}
+    )
 }

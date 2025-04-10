@@ -5,7 +5,9 @@ import androidx.lifecycle.ViewModel
 import br.com.ifpe.gleicekelly.alaga.ui.model.City
 
 class MainViewModel : ViewModel() {
-    private val _cities = getCities().toMutableStateList()
+    private val _cities = List(20) { i ->
+        City(name = "Cidade $i", weather = "Carregando clima...")
+    }.toMutableStateList()
     val cities
         get() = _cities.toList()
 
@@ -16,9 +18,5 @@ class MainViewModel : ViewModel() {
     fun add(name: String) {
         _cities.add(City(name = name))
     }
-}
 
-//Mudar para rua
-private fun getCities() = List(20) { i ->
-    City(name = "Cidade $i", weather = "Carregando clima...")
 }

@@ -12,14 +12,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import br.com.ifpe.gleicekelly.alaga.R
 import br.com.ifpe.gleicekelly.alaga.ui.view.MainViewModel
 
 @Composable
-fun MapaPage(modifier: Modifier = Modifier, viewModel: MainViewModel) {
+fun MapaPage(viewModel: MainViewModel) {
     Column(
-        modifier = modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize()
         .background(colorResource(id = R.color.yellow_alaga))
         .wrapContentSize(Alignment.Center)
 
@@ -33,4 +34,10 @@ fun MapaPage(modifier: Modifier = Modifier, viewModel: MainViewModel) {
             fontSize = 20.sp
         )
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun MapaPagePreview() {
+    MapaPage(viewModel = MainViewModel())
 }
