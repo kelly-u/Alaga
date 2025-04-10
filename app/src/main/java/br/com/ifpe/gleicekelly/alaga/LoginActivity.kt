@@ -77,7 +77,7 @@ fun LoginPage(modifier: Modifier = Modifier) {
             label = { Text(text = "Digite sua senha") },
             modifier = modifier.fillMaxWidth(),
             onValueChange = { password = it },
-            visualTransformation = PasswordVisualTransformation(),
+            visualTransformation = PasswordVisualTransformation()
         )
         Row(modifier = modifier) {
             Button(
@@ -101,7 +101,8 @@ fun LoginPage(modifier: Modifier = Modifier) {
                 Text("Login")
             }
             Button(
-                onClick = { email = ""; password = "" }
+                onClick = { email = ""; password = "" },
+                enabled = email.isNotEmpty() && password.isNotEmpty()
             ) {
                 Text("Limpar")
             }

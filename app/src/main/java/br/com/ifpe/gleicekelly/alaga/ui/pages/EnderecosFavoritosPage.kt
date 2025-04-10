@@ -1,5 +1,8 @@
 package br.com.ifpe.gleicekelly.alaga.ui.pages
 
+import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Intent
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -23,39 +26,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
+import br.com.ifpe.gleicekelly.alaga.MainActivity
 import br.com.ifpe.gleicekelly.alaga.ui.view.MainViewModel
 import br.com.ifpe.gleicekelly.alaga.ui.model.City
-
-@Composable
-fun EnderecosFavoritosPage(modifier: Modifier = Modifier,
-                           viewModel: MainViewModel) {
-    val cityList = viewModel.cities
-    val context = LocalContext.current
-
-    LazyColumn(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(8.dp)
-    ) {
-        items(cityList) { city ->
-            CityItem(city = city, onClose = {
-                viewModel.remove(city)
-                Toast.makeText(context, "Cidade removida: ${city.name}", Toast.LENGTH_SHORT).show()
-            },
-                onClick = {
-                    Toast.makeText(context, "Cidade selecionada: ${city.name}", Toast.LENGTH_SHORT).show()
-                })
-        }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun EnderecosFavoritosPreview() {
-    // Exemplo de como passar o ViewModel no preview
-    EnderecosFavoritosPage(viewModel = MainViewModel())
-}
 
 //Mudar para rua
 @Composable
@@ -94,12 +67,30 @@ fun CityItem(
         }
     }
 }
-@Preview(showBackground = true)
+
+@SuppressLint("RememberReturnType")
 @Composable
-fun CityItemPreview() {
-    CityItem(
-        city = City(name = "Recife", weather = "Ensolarado"),
-        onClick = {},
-        onClose = {}
-    )
+fun EnderecosFavoritosPage(modifier: Modifier = Modifier,
+                           viewModel: MainViewModel) {
+    val cityList = viewModel.cities
+    val activity = LocalContext.current as? Activity
+
+    LazyColumn(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(8.dp)
+    ) {
+        items(cityList) { city ->
+            CityItem(city = city, onClose = {
+                viewModel.remove(city)
+            }, onClick = {
+                Toast.makeText(activity, "Visualizar cidade", Toast.LENGTH_LONG).show()
+                activity?.startActivity(
+                    Intent(activity, MainActivity::class.java).setFlags(
+                        Intent.FLAG_ACTIVITY_SINGLE_TOP
+                    )
+                )
+            })
+        }
+    }
 }

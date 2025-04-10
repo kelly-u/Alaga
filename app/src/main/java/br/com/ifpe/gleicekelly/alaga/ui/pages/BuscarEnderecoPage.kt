@@ -35,9 +35,3 @@ fun BuscarEnderecoPage(viewModel: MainViewModel) {
         )
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun MapPagePreview() {
-    BuscarEnderecoPage(viewModel = MainViewModel())
-}

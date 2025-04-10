@@ -1,4 +1,3 @@
-
 package br.com.ifpe.gleicekelly.alaga
 
 import android.app.Activity
@@ -31,9 +30,11 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import br.com.ifpe.gleicekelly.alaga.ui.theme.AlagaTheme
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
+import br.com.ifpe.gleicekelly.alaga.ui.db.fb.FBDatabase
+import br.com.ifpe.gleicekelly.alaga.ui.model.User
+import br.com.ifpe.gleicekelly.alaga.ui.theme.AlagaTheme
 
 class RegisterActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +44,7 @@ class RegisterActivity : ComponentActivity() {
             AlagaTheme {
                 Scaffold( modifier = Modifier.fillMaxSize() ) { innerPadding ->
                     RegisterPage(
-                        modifier = Modifier.padding(innerPadding)
+                        modifier = Modifier.padding(innerPadding),
                     )
                 }
             }
@@ -109,6 +110,7 @@ fun RegisterPage(modifier: Modifier = Modifier) {
                                     Intent(activity, MainActivity::class.java).setFlags(
                                         FLAG_ACTIVITY_SINGLE_TOP )
                                 )
+                                FBDatabase().register(User(nomeUsuario, email))
                             } else {
                                 Toast.makeText(activity,
                                     "Registro FALHOU!", Toast.LENGTH_LONG).show()
