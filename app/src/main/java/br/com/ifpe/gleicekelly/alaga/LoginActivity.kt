@@ -67,7 +67,7 @@ fun LoginPage(modifier: Modifier = Modifier) {
         horizontalAlignment = CenterHorizontally,
     ) {
         Text(
-            text = "Bem-vindo/a!",
+            text = "LOGIN",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold
         )
@@ -118,7 +118,7 @@ fun LoginPage(modifier: Modifier = Modifier) {
                     )
                 }
             ) {
-                Text("Registre-se")
+                Text("Cadastre-se")
             }
         }
     }

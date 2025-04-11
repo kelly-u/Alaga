@@ -55,7 +55,7 @@ class MainActivity : ComponentActivity() {
             val navController = rememberNavController()
             var showDialog by remember { mutableStateOf(false) }
             val currentRoute = navController.currentBackStackEntryAsState()
-            val showButton = currentRoute.value?.destination?.hasRoute(Route.EnderecosFavoritos::class)?:false
+            val showButton = currentRoute.value?.destination?.hasRoute(Route.BuscarEndereco::class)?:false
             val launcher = rememberLauncherForActivityResult(contract =
             ActivityResultContracts.RequestPermission(), onResult = {} )
 

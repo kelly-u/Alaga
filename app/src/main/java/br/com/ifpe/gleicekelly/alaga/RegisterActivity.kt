@@ -70,7 +70,7 @@ fun RegisterPage(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Registro",
+            text = "CADASTRO",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
         )
@@ -109,7 +109,7 @@ fun RegisterPage(modifier: Modifier = Modifier) {
                     Firebase.auth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(activity!!) { task ->
                             if (task.isSuccessful) {
-                                Toast.makeText(activity,"Registro OK!", Toast.LENGTH_LONG).show()
+                                Toast.makeText(activity,"Cadastro OK!", Toast.LENGTH_LONG).show()
                                 activity.startActivity(
                                     Intent(activity, MainActivity::class.java).setFlags(
                                         FLAG_ACTIVITY_SINGLE_TOP )
@@ -117,13 +117,13 @@ fun RegisterPage(modifier: Modifier = Modifier) {
                                 FBDatabase().register(User(nomeUsuario, email))
                             } else {
                                 Toast.makeText(activity,
-                                    "Registro FALHOU!", Toast.LENGTH_LONG).show()
+                                    "Cadastro FALHOU!", Toast.LENGTH_LONG).show()
                             }
                         }
                 },
                 enabled = nomeUsuario.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && confPassword.isNotEmpty() && password.equals(confPassword)
             ) {
-                Text("Registrar")
+                Text("Cadastrar")
             }
             Button(
                 onClick = {

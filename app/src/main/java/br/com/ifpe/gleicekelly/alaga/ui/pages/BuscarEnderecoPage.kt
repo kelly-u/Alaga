@@ -22,7 +22,7 @@ fun BuscarEnderecoPage(viewModel: MainViewModel) {
 
     ) {
         Text(
-            text = "Aqui você vai buscar seus endereços!",
+            text = "Clique no botão '+' para encontrar um novo endereço!!",
             fontWeight = FontWeight.Bold,
             color = Color.Black,
             modifier = Modifier.align(Alignment.CenterHorizontally),
