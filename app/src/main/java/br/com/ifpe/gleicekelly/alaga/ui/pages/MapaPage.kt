@@ -22,8 +22,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 
 @Composable
-fun MapaPage(modifier: Modifier = Modifier,
-             viewModel: MainViewModel) {
+fun MapaPage(viewModel: MainViewModel) {
     val recife = LatLng(-8.05, -34.9)
     val caruaru = LatLng(-8.27, -35.98)
     val joaopessoa = LatLng(-7.12, -34.84)
@@ -37,7 +36,7 @@ fun MapaPage(modifier: Modifier = Modifier,
         )
     }
     GoogleMap (modifier = Modifier.fillMaxSize(),
-        onMapClick = { viewModel.add("Cidade@${it.latitude}:${it.longitude}", location = it)},
+        onMapClick = { viewModel.add("Cidade@${it.latitude}:${it.longitude}", location = it) },
         cameraPositionState = camPosState,
         properties = MapProperties(isMyLocationEnabled = hasLocationPermission),
         uiSettings = MapUiSettings(myLocationButtonEnabled = true)

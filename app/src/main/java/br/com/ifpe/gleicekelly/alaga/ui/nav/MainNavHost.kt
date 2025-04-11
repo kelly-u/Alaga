@@ -14,7 +14,7 @@ import br.com.ifpe.gleicekelly.alaga.ui.view.MainViewModel
 @Composable
 fun MainNavHost(navController: NavHostController, modifier: Modifier = Modifier, viewModel: MainViewModel) {
     NavHost(navController, startDestination = Route.Mapa) {
-        composable<Route.Mapa> { MapaPage(modifier, viewModel) }
+        composable<Route.Mapa> { MapaPage(viewModel) }
         composable<Route.EnderecosFavoritos> { EnderecosFavoritosPage(modifier, viewModel) }
         composable<Route.BuscarEndereco> { BuscarEnderecoPage(viewModel) }
         composable<Route.Sobre> { SobrePage(modifier) }

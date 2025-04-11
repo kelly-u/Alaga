@@ -56,6 +56,7 @@ class MainActivity : ComponentActivity() {
             val showButton = currentRoute.value?.destination?.hasRoute(Route.EnderecosFavoritos::class)?:false
             val launcher = rememberLauncherForActivityResult(contract =
             ActivityResultContracts.RequestPermission(), onResult = {} )
+
             AlagaTheme {
                 if (showDialog) CityDialog(
                     onDismiss = { showDialog = false },
@@ -67,8 +68,7 @@ class MainActivity : ComponentActivity() {
                     topBar = {
                         TopAppBar(
                             title = {
-                                val name = viewModel.user?.name?:"[não logado]"
-                                Text("Bem-vindo/a! $name")
+                                Text("Alaga Aqui, Alaga Lá")
                             },
                             actions = {
                                 IconButton( onClick = {
