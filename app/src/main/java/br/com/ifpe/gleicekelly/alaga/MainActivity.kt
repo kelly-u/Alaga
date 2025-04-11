@@ -88,6 +88,7 @@ class MainActivity : ComponentActivity() {
                         val items = listOf(
                             BottomNavItem.MapaButton,
                             BottomNavItem.EnderecosFavoritosButton,
+                            BottomNavItem.AlertaButton,
                             BottomNavItem.BuscarEnderecoButton,
                             BottomNavItem.SobreButton,
                         )

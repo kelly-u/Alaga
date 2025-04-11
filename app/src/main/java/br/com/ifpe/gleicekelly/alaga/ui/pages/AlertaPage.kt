@@ -1,5 +1,6 @@
 package br.com.ifpe.gleicekelly.alaga.ui.pages
 
+import android.widget.ImageView
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,20 +15,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import br.com.ifpe.gleicekelly.alaga.R
-import br.com.ifpe.gleicekelly.alaga.ui.view.MainViewModel
 
 @Composable
-fun BuscarEnderecoPage(viewModel: MainViewModel) {
+fun AlertaPage(modifier: Modifier = Modifier) {
     Column(
-        modifier = Modifier.fillMaxSize()
-            .background(colorResource(id = R.color.blue_alaga))
+        modifier = modifier.fillMaxSize()
+            .background(colorResource(id = R.color.darkk_blue))
             .wrapContentSize(Alignment.Center)
-
     ) {
         Text(
-            text = "Aqui você vai buscar seus endereços!",
+            text = "Alerta",
             fontWeight = FontWeight.Bold,
-            color = Color.Black,
+            color = Color.White,
             modifier = Modifier.align(Alignment.CenterHorizontally),
             textAlign = TextAlign.Center,
             fontSize = 20.sp

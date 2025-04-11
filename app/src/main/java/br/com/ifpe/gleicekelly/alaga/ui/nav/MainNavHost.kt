@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import br.com.ifpe.gleicekelly.alaga.ui.pages.AlertaPage
 import br.com.ifpe.gleicekelly.alaga.ui.pages.BuscarEnderecoPage
 import br.com.ifpe.gleicekelly.alaga.ui.pages.EnderecosFavoritosPage
 import br.com.ifpe.gleicekelly.alaga.ui.pages.MapaPage
@@ -16,6 +17,7 @@ fun MainNavHost(navController: NavHostController, modifier: Modifier = Modifier,
     NavHost(navController, startDestination = Route.Mapa) {
         composable<Route.Mapa> { MapaPage(viewModel) }
         composable<Route.EnderecosFavoritos> { EnderecosFavoritosPage(modifier, viewModel) }
+        composable<Route.Alerta> { AlertaPage(modifier) }
         composable<Route.BuscarEndereco> { BuscarEnderecoPage(viewModel) }
         composable<Route.Sobre> { SobrePage(modifier) }
     }
