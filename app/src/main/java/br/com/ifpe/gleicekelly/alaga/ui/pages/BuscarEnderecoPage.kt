@@ -9,18 +9,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
-import br.com.ifpe.gleicekelly.alaga.R
 import br.com.ifpe.gleicekelly.alaga.ui.view.MainViewModel
 
 @Composable
 fun BuscarEnderecoPage(viewModel: MainViewModel) {
     Column(
         modifier = Modifier.fillMaxSize()
-            .background(colorResource(id = R.color.blue_alaga))
             .wrapContentSize(Alignment.Center)
 
     ) {

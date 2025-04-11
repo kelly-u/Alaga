@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -26,6 +27,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -62,31 +65,32 @@ fun RegisterPage(modifier: Modifier = Modifier) {
     val activity = LocalContext.current as? Activity
 
     Column(
-        modifier = modifier.padding(16.dp).fillMaxSize(),
+        modifier = modifier.padding(16.dp).fillMaxSize().background(colorResource(id = br.com.ifpe.gleicekelly.alaga.R.color.blue_bg)),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
             text = "Registro",
             fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
         )
         OutlinedTextField(
             value = nomeUsuario,
             label = { Text(text = "Digite seu nome de usuário") },
-            modifier = modifier.fillMaxWidth(),
+            modifier = modifier.fillMaxWidth().background(colorResource(id = br.com.ifpe.gleicekelly.alaga.R.color.white)),
             onValueChange = { nomeUsuario = it }
         )
         OutlinedTextField(
             value = email,
             label = { Text(text = "Digite seu email") },
-            modifier = modifier.fillMaxWidth(),
+            modifier = modifier.fillMaxWidth().background(colorResource(id = br.com.ifpe.gleicekelly.alaga.R.color.white)),
             onValueChange = { email = it }
         )
 
         OutlinedTextField(
             value = password,
             label = { Text(text = "Digite sua senha") },
-            modifier = modifier.fillMaxWidth(),
+            modifier = modifier.fillMaxWidth().background(colorResource(id = br.com.ifpe.gleicekelly.alaga.R.color.white)),
             onValueChange = { password = it },
             visualTransformation = PasswordVisualTransformation()
         )
@@ -94,7 +98,7 @@ fun RegisterPage(modifier: Modifier = Modifier) {
         OutlinedTextField(
             value = confPassword,
             label = { Text(text = "Digite sua senha novamente") },
-            modifier = modifier.fillMaxWidth(),
+            modifier = modifier.fillMaxWidth().background(colorResource(id = br.com.ifpe.gleicekelly.alaga.R.color.white)),
             onValueChange = { confPassword = it },
             visualTransformation = PasswordVisualTransformation()
         )
